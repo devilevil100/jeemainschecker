@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>File Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('#test').on('click', function(e) {
+            e.preventDefault()
+            $.getJSON('/background_process_test',
+                function(data) {
+                    console.log(data)
+              //do nothing
+            });
+
+          });
+        });
+</script>
+
+  </head>
+  <body>
+    <img src="https://i.imgur.com/csBOBjB.png" style="width:100%;">
+    <h1>Response Upload</h1>
+    <form action="{{ url_for('upload_resfiles') }}" class="dropzone">
+    </form>
+    <h1>Answer Upload</h1>
+    <form action="{{ url_for('upload_anssfiles') }}" class="dropzone">
+    </form>
+    <form action="/forward/" method="post">
+    <button name="forwardBtn" type="submit">Calculate</button>
+    <h1> MARKS SCORED: {{marks}} </h1>
+    <h1> Correct:{{correct}} </h1>
+    <h1> Incorrect: {{inc}} </h1>
+    <h1> Wrong question ids: {{qids}}</h1>
+</form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.1/min/dropzone.min.js"></script>
+  </body>
+</html>
